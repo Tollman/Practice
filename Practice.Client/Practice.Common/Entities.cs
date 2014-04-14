@@ -31,6 +31,34 @@ namespace Practice.Common
 
 	public class Car : IEntity
 	{
-		
+        public int Id { get; set; }
+
+        public int TrunkId { get; set; }
+
+        public int TypeId { get; set; }
+
+        public int DetailedId { get; set; }
+
+        public float Cost { get; set; }
+
+        public String Mark { get; set; }
+
+        public String Color { get; set; }
 	}
+
+    public class CarType
+    {
+        public int Id { get; set; }
+
+        public String Type { get; set; }
+    }
+
+    public class DetailedInfo
+    {
+        public int Id { get; set; }
+
+        public int Motor { get; set; }
+
+        public string GearType { get; set; }
+    }
 }
