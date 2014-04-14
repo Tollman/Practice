@@ -1,0 +1,8 @@
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.csprojResolveAssemblyReference.cache
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.MainWindow.resources
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.Properties.Resources.resources
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.csproj.GenerateResource.Cache
+D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Client.exe
+D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Client.pdb
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.exe
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.pdb
