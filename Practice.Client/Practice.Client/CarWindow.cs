@@ -11,6 +11,32 @@ using System.Windows.Forms;
 
 namespace Practice.Client
 {
+	[Serializable]
+	public class MyException : ApplicationException
+	{
+		public MyException(string msg)
+			: base(msg)
+		{
+
+		}
+	}
+
+	public class MySb
+	{
+		private char[] array;
+
+		public MySb(string input)
+		{
+			array = new char[input.Length];
+
+			for (int i = 0; i < input.Length; i++)
+			{
+				array[i] = input[i];
+			}
+		}
+	}
+
+
 	public partial class CarWindow : Form
 	{
 		private Ilog logger;
@@ -23,12 +49,36 @@ namespace Practice.Client
 			Type type = Type.GetType(typeStr);
 			logger = (Ilog)Activator.CreateInstance(type);
 			Load += CarWindow_Load;
+
 		}
 
 		private void CarWindow_Load(object sender, EventArgs e)
 		{
+			string data = System.IO.File.ReadAllText(@"G:\StorageScp2.cs");
+
+			MySb sb = new MySb(data);
+			int gen = GC.GetGeneration(sb);
+			StringBuilder sb2 = new StringBuilder(data);
+			int gen2 = GC.GetGeneration(sb2);
+
 			MessageBox.Show(logger.GetType().ToString());
+
+			try
+			{
+				Do3();
+			}
+			catch (MyException ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 		}
+
+		public void Do3()
+		{
+			throw new MyException("Hello from exception");
+
+		}
+
 
 		public List<IMonster> objects = new List<IMonster>();
 
