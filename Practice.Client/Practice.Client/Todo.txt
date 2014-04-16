@@ -1,0 +1,8 @@
+﻿1) Implement all repositories for each entity (Car, CarType,.....)
+2) for each repositories create instances like in Program .cs (see static ctor)
+3) By clicking on Trunk menu item show TrunkWindow ()
+	a) implement menu (Options -> Add)
+	b) create AddTrunkWindow (implment all UI components and buttons :add, cancel)
+	c) How to work with datagrid component in windows forms (http://www.dotnetperls.com/datagridview)
+	d) after each operation with trunk refresh datagrid
+

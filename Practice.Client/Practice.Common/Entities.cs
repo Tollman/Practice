@@ -10,14 +10,9 @@ namespace Practice.Common
 		int Id { get; set; }
 	}
 
-	public class Trunk:IEntity
+	public class Trunk : IEntity
 	{
-
-		public int Id
-		{
-			get;
-			set;
-		}
+		public int Id { get; set; }
 
 		public string Name { get; set; }
 
@@ -31,34 +26,40 @@ namespace Practice.Common
 
 	public class Car : IEntity
 	{
-        public int Id { get; set; }
+		public int Id { get; set; }
 
-        public int TrunkId { get; set; }
+		public int TrunkId { get; set; }
 
-        public int TypeId { get; set; }
+		public int TypeId { get; set; }
 
-        public int DetailedId { get; set; }
+		public int DetailedId { get; set; }
 
-        public float Cost { get; set; }
+		public float Cost { get; set; }
 
-        public String Mark { get; set; }
+		public String Mark { get; set; }
 
-        public String Color { get; set; }
+		public String Color { get; set; }
+
+		public CarType Type { get; set; }
+
+		public DetailedInfo Info { get; set; }
+
+		public Trunk Trunk { get; set; }
 	}
 
-    public class CarType
-    {
-        public int Id { get; set; }
+	public class CarType : IEntity
+	{
+		public int Id { get; set; }
 
-        public String Type { get; set; }
-    }
+		public String Type { get; set; }
+	}
 
-    public class DetailedInfo
-    {
-        public int Id { get; set; }
+	public class DetailedInfo : IEntity
+	{
+		public int Id { get; set; }
 
-        public int Motor { get; set; }
+		public int Motor { get; set; }
 
-        public string GearType { get; set; }
-    }
+		public string GearType { get; set; }
+	}
 }

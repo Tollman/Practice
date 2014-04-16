@@ -11,32 +11,6 @@ using System.Windows.Forms;
 
 namespace Practice.Client
 {
-	[Serializable]
-	public class MyException : ApplicationException
-	{
-		public MyException(string msg)
-			: base(msg)
-		{
-
-		}
-	}
-
-	public class MySb
-	{
-		private char[] array;
-
-		public MySb(string input)
-		{
-			array = new char[input.Length];
-
-			for (int i = 0; i < input.Length; i++)
-			{
-				array[i] = input[i];
-			}
-		}
-	}
-
-
 	public partial class CarWindow : Form
 	{
 		private Ilog logger;
@@ -96,6 +70,31 @@ namespace Practice.Client
 			foreach (var item in objects)
 			{
 				item.Kill();
+			}
+		}
+	}
+
+	[Serializable]
+	public class MyException : ApplicationException
+	{
+		public MyException(string msg)
+			: base(msg)
+		{
+
+		}
+	}
+
+	public class MySb
+	{
+		private char[] array;
+
+		public MySb(string input)
+		{
+			array = new char[input.Length];
+
+			for (int i = 0; i < input.Length; i++)
+			{
+				array[i] = input[i];
 			}
 		}
 	}
