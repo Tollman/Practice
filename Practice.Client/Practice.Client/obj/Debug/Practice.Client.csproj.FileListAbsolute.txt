@@ -6,3 +6,8 @@ D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Client.exe
 D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Client.pdb
 D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.exe
 D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.pdb
+D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Client.exe.config
+D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Common.dll
+D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Common.pdb
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.AddTrunkWindow.resources
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.TrunkWindow.resources

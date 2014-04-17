@@ -12,15 +12,35 @@ namespace Practice.Client
 {
 	public partial class TrunkWindow : Form
 	{
-		public TrunkWindow()
+        public TrunkWindow()
 		{
-			InitializeComponent();
-			this.Load += TrunkWindow_Load;
-		}
+            InitializeComponent();
+            this.Load += TrunkWindow_Load;
+   		}
 
 		void TrunkWindow_Load(object sender, EventArgs e)
 		{
-			IEnumerable<Trunk> trunks = Program.trunkRepo.GetAll();
-		}
-	}
+            IEnumerable<Trunk> trunks = Program.trunkRepo.GetAll();
+            dataGridView1.DataSource = trunks;
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTrunkWindow atw = new AddTrunkWindow();
+            atw.Show();
+            atw.FormClosed += atw_FormClosed;
+        }
+
+        void atw_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            dataGridView1.DataSource = null;
+           IEnumerable<Trunk> trunks = Program.trunkRepo.GetAll();
+           dataGridView1.DataSource = trunks;
+        }
+        
+        internal void ScrollControlIntoView()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

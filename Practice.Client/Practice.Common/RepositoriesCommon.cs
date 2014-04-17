@@ -15,4 +15,7 @@ namespace Practice.Common
 	}
 
 	public interface ITrunkRepository : IRepository<Trunk> { }
+    public interface ICarRepository : IRepository<Car> { }
+    public interface ITypeRepository : IRepository<CarType> { }
+    public interface IInfoRepository : IRepository<DetailedInfo> { }
 }

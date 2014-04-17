@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTrunkWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTrunkWindow.Designer.cs">
+      <DependentUpon>AddTrunkWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="CarWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="TrunkWindow.Designer.cs">
       <DependentUpon>TrunkWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddTrunkWindow.resx">
+      <DependentUpon>AddTrunkWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,7 +89,9 @@
     <EmbeddedResource Include="TrunkWindow.resx">
       <DependentUpon>TrunkWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

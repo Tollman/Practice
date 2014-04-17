@@ -15,5 +15,23 @@ namespace Practice.Client
         {
             InitializeComponent();
         }
+
+        private void trunksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TrunkWindow tw = new TrunkWindow();
+            tw.Activate();
+            tw.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void carsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CarWindow cw = new CarWindow();
+            cw.Show();
+        }
     }
 }

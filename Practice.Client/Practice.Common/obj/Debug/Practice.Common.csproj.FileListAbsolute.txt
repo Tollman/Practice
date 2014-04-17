@@ -1,0 +1,5 @@
+D:\Git\Practice.Client\Practice.Common\bin\Debug\Practice.Common.dll
+D:\Git\Practice.Client\Practice.Common\bin\Debug\Practice.Common.pdb
+D:\Git\Practice.Client\Practice.Common\obj\Debug\Practice.Common.csprojResolveAssemblyReference.cache
+D:\Git\Practice.Client\Practice.Common\obj\Debug\Practice.Common.dll
+D:\Git\Practice.Client\Practice.Common\obj\Debug\Practice.Common.pdb

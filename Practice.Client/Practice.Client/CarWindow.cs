@@ -23,8 +23,7 @@ namespace Practice.Client
 			Type type = Type.GetType(typeStr);
 			logger = (Ilog)Activator.CreateInstance(type);
 			Load += CarWindow_Load;
-
-		}
+        }
 
 		private void CarWindow_Load(object sender, EventArgs e)
 		{

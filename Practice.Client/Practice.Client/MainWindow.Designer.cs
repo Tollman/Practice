@@ -61,6 +61,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
@@ -76,12 +77,14 @@
             this.trunksToolStripMenuItem.Name = "trunksToolStripMenuItem";
             this.trunksToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.trunksToolStripMenuItem.Text = "Trunks";
+            this.trunksToolStripMenuItem.Click += new System.EventHandler(this.trunksToolStripMenuItem_Click);
             // 
             // carsToolStripMenuItem
             // 
             this.carsToolStripMenuItem.Name = "carsToolStripMenuItem";
             this.carsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.carsToolStripMenuItem.Text = "Cars";
+            this.carsToolStripMenuItem.Click += new System.EventHandler(this.carsToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
