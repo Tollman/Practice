@@ -9,29 +9,30 @@ using System.Windows.Forms;
 
 namespace Practice.Client
 {
-    public partial class MainWindow : Form
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+	public partial class MainWindow : Form
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
 
-        private void trunksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TrunkWindow tw = new TrunkWindow();
-            tw.Activate();
-            tw.Show();
-        }
+		private void trunksToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			TrunkWindow tw = new TrunkWindow();
+			tw.Owner = this;
+			tw.Show();
+		}
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 
-        private void carsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CarWindow cw = new CarWindow();
-            cw.Show();
-        }
-    }
+		private void carsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CarWindow cw = new CarWindow();
+			cw.Owner = this;
+			cw.Show();
+		}
+	}
 }

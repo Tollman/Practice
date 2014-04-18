@@ -10,34 +10,33 @@ using System.Windows.Forms;
 
 namespace Practice.Client
 {
-    public partial class AddTrunkWindow : Form
-    {
-        Trunk newTrunk = new Trunk();
-        public AddTrunkWindow()
-        {
-            InitializeComponent();
-        }
+	public partial class AddTrunkWindow : Form
+	{
+		public AddTrunkWindow()
+		{
+			InitializeComponent();
+		}
 
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            string enteredName = NameBox.Text;
-            string chekingName = enteredName.Trim();
-            string enteredAddress = AddressBox.Text;
-            string chekingAddress = enteredAddress.Trim();
-            if (chekingName != "" && chekingAddress != "")
-            {
-                newTrunk.Name = chekingName;
-                newTrunk.Address = chekingAddress;
-                Program.trunkRepo.Add(newTrunk);
-                this.Close();
-            }
-            else MessageBox.Show("You don't enter a trunk name or address");  
-            //Program.trunkRepo.Add(
-        }
+		private void AddButton_Click(object sender, EventArgs e)
+		{
+			string chekingName = NameBox.Text.Trim();
+			string chekingAddress = AddressBox.Text.Trim();
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-    }
+			if (!string.IsNullOrEmpty(chekingName) && !string.IsNullOrEmpty(chekingAddress))
+			{
+				Trunk newTrunk = new Trunk();
+				newTrunk.Name = chekingName;
+				newTrunk.Address = chekingAddress;
+				Program.trunkRepo.Add(newTrunk);
+				this.Close();
+			}
+			else
+				MessageBox.Show("You don't enter a trunk name or address");
+		}
+
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+	}
 }
