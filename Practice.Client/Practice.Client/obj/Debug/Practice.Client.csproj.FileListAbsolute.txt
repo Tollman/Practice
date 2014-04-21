@@ -11,3 +11,5 @@ D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Common.dll
 D:\Git\Practice.Client\Practice.Client\bin\Debug\Practice.Common.pdb
 D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.AddTrunkWindow.resources
 D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.TrunkWindow.resources
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.CarWindow.resources
+D:\Git\Practice.Client\Practice.Client\obj\Debug\Practice.Client.AddCarWindow.resources

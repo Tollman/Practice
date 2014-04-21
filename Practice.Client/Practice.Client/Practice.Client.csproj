@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCarWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCarWindow.Designer.cs">
+      <DependentUpon>AddCarWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddTrunkWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,8 +78,14 @@
     <Compile Include="TrunkWindow.Designer.cs">
       <DependentUpon>TrunkWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCarWindow.resx">
+      <DependentUpon>AddCarWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddTrunkWindow.resx">
       <DependentUpon>AddTrunkWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarWindow.resx">
+      <DependentUpon>CarWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
