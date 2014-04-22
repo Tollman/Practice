@@ -75,12 +75,17 @@ namespace Practice.Common
 
 		public void Remove(Trunk entity)
 		{
-			xmlTrunks.Remove();
+			XElement element = xmlTrunks.Root.Descendants().FirstOrDefault(x => int.Parse(x.Element("Id").Value) == entity.Id);
+			element.Remove();
+			xmlTrunks.Save(fileName);
 		}
 
 		public void Update(Trunk entity)
 		{
-			Console.WriteLine("))):)");
+			XElement element= xmlTrunks.Root.Descendants().FirstOrDefault(x => int.Parse(x.Element("Id").Value) == entity.Id);
+			element.Element("Name").Value = entity.Name;
+
+			xmlTrunks.Save(fileName);
 		}
 	}
 }
