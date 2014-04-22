@@ -18,6 +18,7 @@ TO READ:
 - arrays
 - how to work with XML
 - WCF
+- Threading (page 744)
 
 - EntityFramework
 
