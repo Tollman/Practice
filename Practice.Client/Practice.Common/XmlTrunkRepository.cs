@@ -24,15 +24,13 @@ namespace Practice.Common
 		{
             Trunk newTrunk = new Trunk();
             List<Trunk> trunks = new List<Trunk>();
-            XDocument doc = XDocument.Load(fileName);
-            foreach (XElement el in doc.Root.Elements())
+            xmlTrunks = XDocument.Load(fileName);
+            foreach (XElement el in xmlTrunks.Root.Elements())
             {
-                if (el.Name == "Name" || el.Name == "Address")
-                {
-                    newTrunk.Name = el.Value;
-                    newTrunk.Address = el.Value;
-                    trunks.Add(newTrunk);
-                }
+                newTrunk.Id = Convert.ToInt32(el.Element("Id").Value);
+                newTrunk.Name = el.Element("Name").Value;
+                newTrunk.Address = el.Element("Address").Value;
+                trunks.Add(newTrunk);
             }
 			return trunks;
 		}
