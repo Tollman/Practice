@@ -39,9 +39,10 @@ namespace Practice.Common
 		{
 			List<Trunk> trunks = new List<Trunk>();
 			xmlTrunks = XDocument.Load(fileName);
+			Trunk newTrunk = null;
 			foreach (XElement el in xmlTrunks.Root.Elements())
 			{
-				Trunk newTrunk = new Trunk();
+				newTrunk = new Trunk();
 				newTrunk.Id = Convert.ToInt32(el.Element("Id").Value);
 				newTrunk.Name = el.Element("Name").Value;
 				newTrunk.Address = el.Element("Address").Value;

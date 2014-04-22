@@ -9,7 +9,7 @@ namespace Practice.Common
     class XmlCarRepository : ICarRepository
     {
         private XDocument xmlCars;
-        private string fileName = "BD.xml";
+        private string fileName = "BDCar.xml";
 
 		private int prevIndex = -1;
 

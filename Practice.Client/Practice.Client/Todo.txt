@@ -13,6 +13,7 @@ Task due to Tuesday:
 	b) read how to work with XML (XDocumet etc)
 
 2) Implement the same logic for the Car window 
+ + add logic of car affinity to the appropriate trunk .(on the car window add combobox and loaf the trnks from the TrunkRepo)
 
 TO READ:
 - arrays
