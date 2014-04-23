@@ -10,42 +10,36 @@ namespace Practice.Common
 	class XmlTrunkRepository : ITrunkRepository
 	{
 		private XDocument xmlTrunks;
-		private string fileName = "BD.xml";
+		private string fileName = "TrunksDB.xml";
 
 		private int prevIndex = -1;
 
-		public XmlTrunkRepository()
-		{
-			if (!System.IO.File.Exists(fileName))
-			{
-				xmlTrunks = new XDocument(new XElement("TrunksDB"));
-				xmlTrunks.Save(fileName);
-			}
-
-			foreach (int item in GetSmth())
-			{
-				Console.WriteLine(item);
-			}
-		}
-
-		public IEnumerable<int> GetSmth()
-		{
-			yield return 1;
-			yield return 2;
-		}
-
-
+        public XmlTrunkRepository()
+        {
+            if (!System.IO.File.Exists(fileName))
+            {
+                xmlTrunks = new XDocument(new XElement("TrunksDB"));
+                xmlTrunks.Save(fileName);
+            }
+            else
+            {
+                xmlTrunks = XDocument.Load(fileName);
+                if (!xmlTrunks.Root.IsEmpty) prevIndex = int.Parse(xmlTrunks.Root.Descendants("Trunk").Last().Element("Id").Value);
+            }
+        }
 		public IEnumerable<Trunk> GetAll()
 		{
-			List<Trunk> trunks = new List<Trunk>();
+            List<Trunk> trunks = new List<Trunk>();
 			xmlTrunks = XDocument.Load(fileName);
-			Trunk newTrunk = null;
+            Trunk newTrunk = null;
 			foreach (XElement el in xmlTrunks.Root.Elements())
 			{
 				newTrunk = new Trunk();
 				newTrunk.Id = Convert.ToInt32(el.Element("Id").Value);
 				newTrunk.Name = el.Element("Name").Value;
 				newTrunk.Address = el.Element("Address").Value;
+                newTrunk.CarCount = int.Parse(el.Element("CarCount").Value);
+                newTrunk.Cars = new List<Car>();
 				trunks.Add(newTrunk);
 			}
 			return trunks;
@@ -53,38 +47,44 @@ namespace Practice.Common
 
 		public Trunk GetById(int id)
 		{
-			string sId = id.ToString();
-			return (Trunk)xmlTrunks.Root.Descendants("Trunk").Where(t => t.Element("Id").Value == sId);
+            Trunk getTrunk = new Trunk();
+            XElement element = xmlTrunks.Root.Descendants("Trunk").ElementAt<XElement>(id);
+            getTrunk.Name = element.Element("Name").Value;
+            getTrunk.Address = element.Element("Address").Value;
+            getTrunk.CarCount = int.Parse(element.Element("CarCount").Value);
+			return getTrunk;
 		}
 
 		public void Add(Trunk entity)
 		{
-			prevIndex++;
+            prevIndex++;
 			entity.Id = prevIndex;
-			XElement trunk = new XElement("Trunk");
+            XElement trunk = new XElement("Trunk");
 			XElement id = new XElement("Id", entity.Id);
 			trunk.Add(id);
 			XElement name = new XElement("Name", entity.Name);
 			trunk.Add(name);
 			XElement address = new XElement("Address", entity.Address);
 			trunk.Add(address);
-			xmlTrunks.Root.Add(trunk);
+            XElement carCount = new XElement("CarCount", entity.CarCount);
+            trunk.Add(carCount);
+            xmlTrunks.Root.Add(trunk);
 			//xmlTrunks = new XDocument(new XElement("Trunk", new XElement("Id", entity.Id), new XElement("Name", entity.Name), new XElement("Address", entity.Address)));
 			xmlTrunks.Save(fileName);
 		}
 
 		public void Remove(Trunk entity)
 		{
-			XElement element = xmlTrunks.Root.Descendants().FirstOrDefault(x => int.Parse(x.Element("Id").Value) == entity.Id);
-			element.Remove();
+            xmlTrunks.Root.Descendants("Trunk").ElementAt<XElement>(entity.Id).Remove();
 			xmlTrunks.Save(fileName);
 		}
 
 		public void Update(Trunk entity)
 		{
-			XElement element= xmlTrunks.Root.Descendants().FirstOrDefault(x => int.Parse(x.Element("Id").Value) == entity.Id);
+            XElement element = xmlTrunks.Root.Descendants("Trunk").ElementAt<XElement>(entity.Id);
 			element.Element("Name").Value = entity.Name;
-
+            element.Element("Address").Value = entity.Address;
+            element.Element("CarCount").Value = entity.CarCount.ToString();
 			xmlTrunks.Save(fileName);
 		}
 	}

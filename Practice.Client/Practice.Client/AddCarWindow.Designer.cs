@@ -36,6 +36,8 @@
             this.ColorLabel = new System.Windows.Forms.Label();
             this.MarkLabel = new System.Windows.Forms.Label();
             this.CostLabel = new System.Windows.Forms.Label();
+            this.TrunkChoseBox = new System.Windows.Forms.ComboBox();
+            this.TrunkLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AddButton
@@ -108,11 +110,30 @@
             this.CostLabel.TabIndex = 5;
             this.CostLabel.Text = "Cost:";
             // 
+            // TrunkChoseBox
+            // 
+            this.TrunkChoseBox.FormattingEnabled = true;
+            this.TrunkChoseBox.Location = new System.Drawing.Point(161, 24);
+            this.TrunkChoseBox.Name = "TrunkChoseBox";
+            this.TrunkChoseBox.Size = new System.Drawing.Size(117, 21);
+            this.TrunkChoseBox.TabIndex = 11;
+            // 
+            // TrunkLabel
+            // 
+            this.TrunkLabel.AutoSize = true;
+            this.TrunkLabel.Location = new System.Drawing.Point(158, 9);
+            this.TrunkLabel.Name = "TrunkLabel";
+            this.TrunkLabel.Size = new System.Drawing.Size(65, 13);
+            this.TrunkLabel.TabIndex = 12;
+            this.TrunkLabel.Text = "ChoseTrunk";
+            // 
             // AddCarWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 289);
+            this.Controls.Add(this.TrunkLabel);
+            this.Controls.Add(this.TrunkChoseBox);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ColorBox);
@@ -138,5 +159,7 @@
         private System.Windows.Forms.Label ColorLabel;
         private System.Windows.Forms.Label MarkLabel;
         private System.Windows.Forms.Label CostLabel;
+        private System.Windows.Forms.ComboBox TrunkChoseBox;
+        private System.Windows.Forms.Label TrunkLabel;
     }
 }

@@ -8,51 +8,71 @@ namespace Practice.Common
 {
     class XmlTypeRepository : ITypeRepository
     {
-                private XDocument xmlTrunks;
-        private string fileName = "BD.xml";
+        private XDocument xmlTypes;
+        private string fileName = "TypeDB.xml";
 
 		private int prevIndex = -1;
 
 		public XmlTypeRepository()
 		{
-            xmlTrunks = new XDocument();
+            if (!System.IO.File.Exists(fileName))
+            {
+                xmlTypes = new XDocument(new XElement("TypesDB"));
+                xmlTypes.Save(fileName);
+            }
+            else
+            {
+                xmlTypes = XDocument.Load(fileName);
+                if (!xmlTypes.Root.IsEmpty) prevIndex = int.Parse(xmlTypes.Root.Descendants("CarType").Last().Element("Id").Value);
+            }
 		}
 
 		public IEnumerable<CarType> GetAll()
 		{
-			return (IEnumerable<CarType>) xmlTrunks;
+            List<CarType> types = new List<CarType>();
+            xmlTypes = XDocument.Load(fileName);
+            CarType newType = null;
+            foreach (XElement el in xmlTypes.Root.Elements())
+            {
+                newType = new CarType();
+                newType.Id = Convert.ToInt32(el.Element("Id").Value);
+                newType.Type = el.Element("Type").Value;
+                types.Add(newType);
+            }
+            return types;
 		}
 
 		public CarType GetById(int id)
 		{
-            string sId = id.ToString();
-            return (CarType) xmlTrunks.Root.Descendants("Trunk").Where(t => t.Element("Id").Value == sId);
+            CarType getType = new CarType();
+            getType.Type = xmlTypes.Root.Descendants("Type").ElementAt<XElement>(id).Element("Type").Value;
+            return getType;
 		}
 
 		public void Add(CarType entity)
 		{
 			prevIndex++;
 			entity.Id = prevIndex;
-            XElement trunk = new XElement("Trunk");
+            XElement carType = new XElement("CarType");
             XElement id = new XElement("Id",entity.Id);
-            trunk.Add(id);
-            XElement name = new XElement("Name", entity.Type);
-            trunk.Add(name);
-            //XElement address = new XElement("Address", entity.Address);
-            //trunk.Add(address);
-            xmlTrunks.Add(trunk);
-            //xmlTrunks = new XDocument(new XElement("Trunk", new XElement("Id", entity.Id), new XElement("Name", entity.Name), new XElement("Address", entity.Address)));
-            xmlTrunks.Save(fileName);
+            carType.Add(id);
+            XElement type = new XElement("Type", entity.Type);
+            carType.Add(type);
+            xmlTypes.Root.Add(carType);
+            //xmlTypes = new XDocument(new XElement("Trunk", new XElement("Id", entity.Id), new XElement("Name", entity.Name), new XElement("Address", entity.Address)));
+            xmlTypes.Save(fileName);
 		}
 
 		public void Remove(CarType entity)
 		{
-            xmlTrunks.Remove();
+            xmlTypes.Root.Descendants("Type").ElementAt<XElement>(entity.Id).Remove();
+            xmlTypes.Save(fileName);
 		}
 
 		public void Update(CarType entity)
 		{
-            Console.WriteLine("))):)");
+            xmlTypes.Root.Descendants("CarType").ElementAt<XElement>(entity.Id).Element("Type").Value = entity.Type;
+            xmlTypes.Save(fileName);
 		}
     }
 }
