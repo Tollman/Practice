@@ -1,4 +1,5 @@
-﻿using Practice.Common;
+﻿using Practice.Client.Services;
+using Practice.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +21,11 @@ namespace Practice.Client
 
 		void TrunkWindow_Load(object sender, EventArgs e)
 		{
-			IEnumerable<Trunk> trunks = Program.trunkRepo.GetAll();
-			dataGridView1.DataSource = trunks;
+			using (TrunkProxy proxy = new TrunkProxy(Program.TrunkUrl))
+			{
+				IEnumerable<Trunk> trunks = proxy.GetAll();
+				dataGridView1.DataSource = trunks;
+			}
 		}
 
 		private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -37,8 +41,11 @@ namespace Practice.Client
 			(sender as AddTrunkWindow).FormClosed -= atw_FormClosed;
 
 			dataGridView1.DataSource = null;
-			IEnumerable<Trunk> trunks = Program.trunkRepo.GetAll();
-			dataGridView1.DataSource = trunks;
+			using (TrunkProxy proxy = new TrunkProxy(Program.TrunkUrl))
+			{
+				IEnumerable<Trunk> trunks = proxy.GetAll();
+				dataGridView1.DataSource = trunks;
+			}
 		}
 	}
 }

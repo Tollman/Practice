@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TrunksDB>
+  <Trunk>
+    <Id>0</Id>
+    <Name>"asdasasdads"</Name>
+    <Address>"Hello"</Address>
+    <CarCount>0</CarCount>
+  </Trunk>
+</TrunksDB>

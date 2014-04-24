@@ -18,9 +18,18 @@ Task due to Tuesday:
 TO READ:
 - arrays
 - how to work with XML
-- WCF
-- Threading (page 744)
+
+- WCF !!!!!!!!!!!!!!!!
+- Threading (page 744) 
+	a) thread syncronization!!!!!!!!!!!!!!
 
 - EntityFramework
 
 
+To monday:
+1) move all repo loading activities to the background thread!!!
+2) Implement server part
+ - for each repo create appropriate service in Practice.Server projects
+  - create proxies for each repos
+  - asynchronous calls of all proxy methods in client solution
+  - look at xml repositories, check SourcePath property!!!

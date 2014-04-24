@@ -9,25 +9,11 @@ namespace Practice.Client
 {
 	static class Program
 	{
-		public static ITrunkRepository trunkRepo;
-		public static ICarRepository carRepo;
-		public static ITypeRepository typeRepo;
-		public static IInfoRepository infoRepo;
+		internal static string TrunkUrl;
 
 		static Program()
 		{
-			string typeStr1 = ConfigurationManager.AppSettings["trunkRepository"];
-			string typeStr2 = ConfigurationManager.AppSettings["carRepository"];
-			string typeStr3 = ConfigurationManager.AppSettings["typeRepository"];
-			string typeStr4 = ConfigurationManager.AppSettings["infoRepository"];
-			Type type1 = Type.GetType(typeStr1);
-			Type type2 = Type.GetType(typeStr2);
-			Type type3 = Type.GetType(typeStr3);
-			Type type4 = Type.GetType(typeStr4);
-			trunkRepo = (ITrunkRepository)Activator.CreateInstance(type1);
-			carRepo = (ICarRepository)Activator.CreateInstance(type2);
-			typeRepo = (ITypeRepository)Activator.CreateInstance(type3);
-			infoRepo = (IInfoRepository)Activator.CreateInstance(type4);
+			TrunkUrl = ConfigurationManager.AppSettings["trunkServiceUrl"];
 		}
 
 		/// <summary>

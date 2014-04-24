@@ -14,8 +14,20 @@ namespace Practice.Common
 		void Update(T entity);
 	}
 
-	public interface ITrunkRepository : IRepository<Trunk> { }
-    public interface ICarRepository : IRepository<Car> { }
-    public interface ITypeRepository : IRepository<CarType> { }
-    public interface IInfoRepository : IRepository<DetailedInfo> { }
+	public interface ITrunkRepository : IRepository<Trunk>
+	{
+		string SourcePath { get; set; }
+	}
+	public interface ICarRepository : IRepository<Car>
+	{
+		string SourcePath { get; set; }
+	}
+	public interface ITypeRepository : IRepository<CarType>
+	{
+		string SourcePath { get; set; }
+	}
+	public interface IInfoRepository : IRepository<DetailedInfo>
+	{
+		string SourcePath { get; set; }
+	}
 }

@@ -9,28 +9,38 @@ namespace Practice.Common
     class XmlCarRepository : ICarRepository
     {
         private XDocument xmlCars;
-        private string fileName = "CarDB.xml";
 
 		private int prevIndex = -1;
 
+		public string SourcePath { get; set; }
+
 		public XmlCarRepository()
 		{
-            if (!System.IO.File.Exists(fileName))
-            {
-                xmlCars = new XDocument(new XElement("CarsDB"));
-                xmlCars.Save(fileName);
-            }
-            else
-            {
-                xmlCars = XDocument.Load(fileName);
-                if (!xmlCars.Root.IsEmpty) prevIndex = int.Parse(xmlCars.Root.Descendants("Car").Last().Element("Id").Value);
-            }
+			CheckSource();
   		}
+
+		private void CheckSource()
+		{
+			if (!string.IsNullOrEmpty(SourcePath))
+			{
+				if (!System.IO.File.Exists(SourcePath))
+				{
+					xmlCars = new XDocument(new XElement("CarsDB"));
+					xmlCars.Save(SourcePath);
+				}
+				else
+				{
+					xmlCars = XDocument.Load(SourcePath);
+					if (!xmlCars.Root.IsEmpty) prevIndex = int.Parse(xmlCars.Root.Descendants("Car").Last().Element("Id").Value);
+				}
+			}
+		}
 
 		public IEnumerable<Car> GetAll()
 		{
+			CheckSource();
             List<Car> cars = new List<Car>();
-            xmlCars = XDocument.Load(fileName);
+            xmlCars = XDocument.Load(SourcePath);
             Car newCar = null;
             foreach (XElement el in xmlCars.Root.Elements())
             {
@@ -47,6 +57,7 @@ namespace Practice.Common
 
 		public Car GetById(int id)
 		{
+			CheckSource();
             Car getCar = new Car();
             XElement element = xmlCars.Root.Descendants("Car").ElementAt<XElement>(id);
             getCar.Cost = float.Parse(element.Element("Cost").Value);
@@ -58,6 +69,7 @@ namespace Practice.Common
 
 		public void Add(Car entity)
 		{
+			CheckSource();
 			prevIndex++;
 			entity.Id = prevIndex;
             XElement car = new XElement("Car");
@@ -73,23 +85,25 @@ namespace Practice.Common
             car.Add(trunkId);
             xmlCars.Root.Add(car);
             //xmlCars = new XDocument(new XElement("Trunk", new XElement("Id", entity.Id), new XElement("Name", entity.Name), new XElement("Address", entity.Address)));
-            xmlCars.Save(fileName);
+            xmlCars.Save(SourcePath);
 		}
 
 		public void Remove(Car entity)
 		{
+			CheckSource();
             xmlCars.Root.Descendants("Car").ElementAt<XElement>(entity.Id).Remove();
-            xmlCars.Save(fileName);
+            xmlCars.Save(SourcePath);
 		}
 
 		public void Update(Car entity)
 		{
+			CheckSource();
             XElement element = xmlCars.Root.Descendants("Car").ElementAt<XElement>(entity.Id);
             element.Element("Cost").Value = entity.Cost.ToString();
             element.Element("Color").Value = entity.Color;
             element.Element("Mark").Value = entity.Mark;
             element.Element("TrunkId").Value = entity.TrunkId.ToString();
-            xmlCars.Save(fileName);
+            xmlCars.Save(SourcePath);
 		}
     }
 }

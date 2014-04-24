@@ -13,6 +13,8 @@ namespace Practice.Common
 
 		private int prevIndex = -1;
 
+		public string SourcePath { get; set; }
+
 		public XmlTypeRepository()
 		{
             if (!System.IO.File.Exists(fileName))

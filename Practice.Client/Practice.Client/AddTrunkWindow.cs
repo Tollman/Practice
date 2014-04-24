@@ -1,4 +1,5 @@
-﻿using Practice.Common;
+﻿using Practice.Client.Services;
+using Practice.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,12 @@ namespace Practice.Client
 				Trunk newTrunk = new Trunk();
 				newTrunk.Name = chekingName;
 				newTrunk.Address = chekingAddress;
-				Program.trunkRepo.Add(newTrunk);
+				using (TrunkProxy proxy = new TrunkProxy(Program.TrunkUrl))
+				{
+					int id= proxy.Add(newTrunk);
+					newTrunk.Id = id;
+				}
+				//Program.trunkRepo.Add(newTrunk);
 				this.Close();
 			}
 			else
