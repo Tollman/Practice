@@ -74,7 +74,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CarProxy.cs" />
+    <Compile Include="Services\InfoProxy.cs" />
     <Compile Include="Services\TrunkProxy.cs" />
+    <Compile Include="Services\TypeProxy.cs" />
     <Compile Include="Services\WcfProxy.cs" />
     <Compile Include="TrunkWindow.cs">
       <SubType>Form</SubType>

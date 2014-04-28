@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Practice.Client
@@ -16,17 +17,25 @@ namespace Practice.Client
 		public TrunkWindow()
 		{
 			InitializeComponent();
-			this.Load += TrunkWindow_Load;
+			
+            Thread loadThread = new Thread(ThreadLoader);
+            loadThread.IsBackground = true;
+            loadThread.Name = "Load trunks";
+            loadThread.Start();
 		}
 
-		void TrunkWindow_Load(object sender, EventArgs e)
-		{
-			using (TrunkProxy proxy = new TrunkProxy(Program.TrunkUrl))
-			{
-				IEnumerable<Trunk> trunks = proxy.GetAll();
-				dataGridView1.DataSource = trunks;
-			}
-		}
+        private void ThreadLoader()
+        {
+            using (TrunkProxy proxy = new TrunkProxy(Program.TrunkUrl))
+            {
+                IEnumerable<Trunk> trunks = proxy.GetAll();
+                dataGridView1.Invoke((MethodInvoker)(() =>
+                {
+                    dataGridView1.DataSource = trunks;
+                }));
+            }
+        }
+
 
 		private void addToolStripMenuItem_Click(object sender, EventArgs e)
 		{

@@ -16,21 +16,27 @@ namespace Practice.Common
 
 		public XmlInfoRepository()
 		{
-			if (!System.IO.File.Exists(fileName))
-			{
-				xmlInfos = new XDocument(new XElement("InfosDB"));
-				xmlInfos.Save(fileName);
-			}
-			else
-			{
-				xmlInfos = XDocument.Load(fileName);
-				if (!xmlInfos.Root.IsEmpty) 
-					prevIndex = int.Parse(xmlInfos.Root.Descendants("Info").Last().Element("Id").Value);
-			}
+            CheckSource();
 		}
+
+        private void CheckSource()
+        {
+            if (!System.IO.File.Exists(fileName))
+            {
+                xmlInfos = new XDocument(new XElement("InfosDB"));
+                xmlInfos.Save(fileName);
+            }
+            else
+            {
+                xmlInfos = XDocument.Load(fileName);
+                if (!xmlInfos.Root.IsEmpty)
+                    prevIndex = int.Parse(xmlInfos.Root.Descendants("Info").Last().Element("Id").Value);
+            }
+        }
 
 		public IEnumerable<DetailedInfo> GetAll()
 		{
+            CheckSource();
 			List<DetailedInfo> infos = new List<DetailedInfo>();
 			xmlInfos = XDocument.Load(fileName);
 			DetailedInfo newInfo = null;
@@ -47,6 +53,7 @@ namespace Practice.Common
 
 		public DetailedInfo GetById(int id)
 		{
+            CheckSource();
 			DetailedInfo getInfo = new DetailedInfo();
 			XElement element = xmlInfos.Root.Descendants("Info").ElementAt<XElement>(id);
 			getInfo.GearType = element.Element("GearType").Value;
@@ -56,6 +63,7 @@ namespace Practice.Common
 
 		public void Add(DetailedInfo entity)
 		{
+            CheckSource();
 			prevIndex++;
 			entity.Id = prevIndex;
 			XElement info = new XElement("Info");
@@ -72,12 +80,14 @@ namespace Practice.Common
 
 		public void Remove(DetailedInfo entity)
 		{
+            CheckSource();
 			xmlInfos.Root.Descendants("Info").ElementAt<XElement>(entity.Id).Remove();
 			xmlInfos.Save(fileName);
 		}
 
 		public void Update(DetailedInfo entity)
 		{
+            CheckSource();
 			XElement element = xmlInfos.Root.Descendants("Info").ElementAt<XElement>(entity.Id);
 			element.Element("GearType").Value = entity.GearType;
 			element.Element("Motor").Value = entity.Motor.ToString();

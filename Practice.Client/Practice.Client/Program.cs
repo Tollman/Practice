@@ -10,10 +10,16 @@ namespace Practice.Client
 	static class Program
 	{
 		internal static string TrunkUrl;
+        internal static string CarUrl;
+        internal static string TypeUrl;
+        internal static string InfoUrl;
 
 		static Program()
 		{
 			TrunkUrl = ConfigurationManager.AppSettings["trunkServiceUrl"];
+            CarUrl = ConfigurationManager.AppSettings["carServiceUrl"];
+            TypeUrl = ConfigurationManager.AppSettings["typeServiceUrl"];
+            InfoUrl = ConfigurationManager.AppSettings["infoServiceUrl"];
 		}
 
 		/// <summary>

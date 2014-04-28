@@ -17,6 +17,11 @@ namespace Practice.Common
 
 		public XmlTypeRepository()
 		{
+            CheckSource();
+		}
+
+        private void CheckSource()
+        {
             if (!System.IO.File.Exists(fileName))
             {
                 xmlTypes = new XDocument(new XElement("TypesDB"));
@@ -27,10 +32,11 @@ namespace Practice.Common
                 xmlTypes = XDocument.Load(fileName);
                 if (!xmlTypes.Root.IsEmpty) prevIndex = int.Parse(xmlTypes.Root.Descendants("CarType").Last().Element("Id").Value);
             }
-		}
+        }
 
 		public IEnumerable<CarType> GetAll()
 		{
+            CheckSource();
             List<CarType> types = new List<CarType>();
             xmlTypes = XDocument.Load(fileName);
             CarType newType = null;
@@ -46,6 +52,7 @@ namespace Practice.Common
 
 		public CarType GetById(int id)
 		{
+            CheckSource();
             CarType getType = new CarType();
             getType.Type = xmlTypes.Root.Descendants("Type").ElementAt<XElement>(id).Element("Type").Value;
             return getType;
@@ -53,6 +60,7 @@ namespace Practice.Common
 
 		public void Add(CarType entity)
 		{
+            CheckSource();
 			prevIndex++;
 			entity.Id = prevIndex;
             XElement carType = new XElement("CarType");
@@ -67,12 +75,14 @@ namespace Practice.Common
 
 		public void Remove(CarType entity)
 		{
+            CheckSource();
             xmlTypes.Root.Descendants("Type").ElementAt<XElement>(entity.Id).Remove();
             xmlTypes.Save(fileName);
 		}
 
 		public void Update(CarType entity)
 		{
+            CheckSource();
             xmlTypes.Root.Descendants("CarType").ElementAt<XElement>(entity.Id).Element("Type").Value = entity.Type;
             xmlTypes.Save(fileName);
 		}

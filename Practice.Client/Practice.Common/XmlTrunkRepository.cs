@@ -17,7 +17,7 @@ namespace Practice.Common
 
 		public XmlTrunkRepository()
 		{
-			CheckSource();
+            CheckSource();
 		}
 
 		private void CheckSource()

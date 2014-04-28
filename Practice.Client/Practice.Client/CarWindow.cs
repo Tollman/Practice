@@ -1,4 +1,5 @@
-﻿using Practice.Common;
+﻿using Practice.Client.Services;
+using Practice.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Practice.Client
@@ -16,14 +18,24 @@ namespace Practice.Client
 		public CarWindow()
 		{
 			InitializeComponent();
-			this.Load += CarWindow_Load;
+			
+            Thread loadThread = new Thread(ThreadLoader);
+            loadThread.IsBackground = true;
+            loadThread.Name = "Load cars";
+            loadThread.Start();
 		}
 
-		private void CarWindow_Load(object sender, EventArgs e)
-		{
-			//IEnumerable<Car> cars = Program.carRepo.GetAll();
-			carDataGridView.DataSource = null;
-		}
+        private void ThreadLoader()
+        {
+            using (CarProxy proxy = new CarProxy(Program.CarUrl))
+            {
+                IEnumerable<Car> cars = proxy.GetAll();
+                carDataGridView.Invoke((MethodInvoker)(() =>
+                {
+                    carDataGridView.DataSource = cars;
+                }));
+            }
+        }
 
 		private void addToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -36,11 +48,12 @@ namespace Practice.Client
 		private void acw_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			(sender as AddCarWindow).FormClosed -= acw_FormClosed;
-
 			carDataGridView.DataSource = null;
-			//IEnumerable<Car> cars = Program.carRepo.GetAll();
-			//carDataGridView.DataSource = cars;
-			carDataGridView.DataSource = null;
+            Thread loadThread = new Thread(ThreadLoader);
+            loadThread.IsBackground = true;
+            loadThread.Name = "Load cars";
+            loadThread.Start();
+            //ThreadLoader();
 		}
 	}
 }

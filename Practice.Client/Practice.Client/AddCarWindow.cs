@@ -76,6 +76,10 @@ namespace Practice.Client
 						//Program.trunkRepo.Update(selectedTrunk);
 					}
 				}
+                using (CarProxy carproxy = new CarProxy(Program.CarUrl))
+                {
+                    carproxy.Add(newCar);
+                }
 				//Program.carRepo.Add(newCar);
 				this.Close();
 			}

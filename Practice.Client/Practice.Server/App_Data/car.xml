@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CarsDB>
+  <Car>
+    <Id>0</Id>
+    <Cost>324</Cost>
+    <Color>ыфв</Color>
+    <Mark>фывыфв</Mark>
+    <TrunkId>0</TrunkId>
+  </Car>
+  <Car>
+    <Id>1</Id>
+    <Cost>435435</Cost>
+    <Color>фывфыв</Color>
+    <Mark>ывыфв</Mark>
+    <TrunkId>1</TrunkId>
+  </Car>
+  <Car>
+    <Id>2</Id>
+    <Cost>324</Cost>
+    <Color>фывфыв</Color>
+    <Mark>ывфв</Mark>
+    <TrunkId>0</TrunkId>
+  </Car>
+  <Car>
+    <Id>3</Id>
+    <Cost>324</Cost>
+    <Color>фывыфв</Color>
+    <Mark>фывыф</Mark>
+    <TrunkId>1</TrunkId>
+  </Car>
+  <Car>
+    <Id>4</Id>
+    <Cost>324324</Cost>
+    <Color>ыфвфыв</Color>
+    <Mark>ыфвыфв</Mark>
+    <TrunkId>1</TrunkId>
+  </Car>
+</CarsDB>

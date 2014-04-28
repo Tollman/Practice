@@ -10,14 +10,14 @@ namespace Practice.Common
 	public interface ICarService
 	{
 		[OperationContract]
-		IEnumerable<Trunk> GetAll();
+		IEnumerable<Car> GetAll();
 		[OperationContract]
-		int Add(Trunk data);
+		int Add(Car data);
 		[OperationContract]
-		Trunk GetById(int id);
+		Car GetById(int id);
 		[OperationContract]
-		void Remove(Trunk data);
+		void Remove(Car data);
 		[OperationContract]
-		void Update(Trunk data);
+		void Update(Car data);
 	}
 }

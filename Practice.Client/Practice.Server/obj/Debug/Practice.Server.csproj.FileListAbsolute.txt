@@ -1,0 +1,7 @@
+D:\Git\Practice.Client\Practice.Server\obj\Debug\Practice.Server.csprojResolveAssemblyReference.cache
+D:\Git\Practice.Client\Practice.Server\bin\Practice.Server.dll
+D:\Git\Practice.Client\Practice.Server\bin\Practice.Server.pdb
+D:\Git\Practice.Client\Practice.Server\bin\Practice.Common.dll
+D:\Git\Practice.Client\Practice.Server\bin\Practice.Common.pdb
+D:\Git\Practice.Client\Practice.Server\obj\Debug\Practice.Server.dll
+D:\Git\Practice.Client\Practice.Server\obj\Debug\Practice.Server.pdb

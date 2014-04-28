@@ -1,6 +1,7 @@
 ﻿using Practice.Common;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -8,32 +9,53 @@ using System.Text;
 
 namespace Practice.Server
 {
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single)]
 	public class CarService : ICarService
 	{
+        readonly ICarRepository repo;
 
-		public IEnumerable<Trunk> GetAll()
+        public CarService() 
+        {
+            try
+            {
+                string typeStr1 = ConfigurationManager.AppSettings["carRepository"];
+                Type type1 = Type.GetType(typeStr1);
+                repo = (ICarRepository)Activator.CreateInstance(type1);
+
+                repo.SourcePath = System.Web.Hosting.HostingEnvironment.MapPath("~/App_data/car.xml");
+            }
+            catch (Exception ex) { }
+        }
+
+		public IEnumerable<Car> GetAll()
 		{
-			throw new NotImplementedException();
+            return repo.GetAll();
 		}
 
-		public int Add(Trunk data)
+		public int Add(Car data)
 		{
-			throw new NotImplementedException();
+            if (data != null)
+            {
+                repo.Add(data);
+                return data.Id;
+            }
+
+            throw new ArgumentNullException();
 		}
 
-		public Trunk GetById(int id)
+		public Car GetById(int id)
 		{
-			throw new NotImplementedException();
+            return repo.GetById(id);
 		}
 
-		public void Remove(Trunk data)
+		public void Remove(Car data)
 		{
-			throw new NotImplementedException();
+            repo.Remove(data);
 		}
 
-		public void Update(Trunk data)
+		public void Update(Car data)
 		{
-			throw new NotImplementedException();
+            repo.Update(data);
 		}
 	}
 }

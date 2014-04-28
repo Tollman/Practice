@@ -2,8 +2,44 @@
 <TrunksDB>
   <Trunk>
     <Id>0</Id>
-    <Name>"asdasasdads"</Name>
-    <Address>"Hello"</Address>
+    <Name>фыв</Name>
+    <Address>ыфв</Address>
+    <CarCount>2</CarCount>
+  </Trunk>
+  <Trunk>
+    <Id>1</Id>
+    <Name>фыв</Name>
+    <Address>фыв</Address>
+    <CarCount>3</CarCount>
+  </Trunk>
+  <Trunk>
+    <Id>2</Id>
+    <Name>ыва</Name>
+    <Address>ыва</Address>
+    <CarCount>0</CarCount>
+  </Trunk>
+  <Trunk>
+    <Id>3</Id>
+    <Name>ыфв</Name>
+    <Address>ыфв</Address>
+    <CarCount>0</CarCount>
+  </Trunk>
+  <Trunk>
+    <Id>4</Id>
+    <Name>ывф</Name>
+    <Address>фыв</Address>
+    <CarCount>0</CarCount>
+  </Trunk>
+  <Trunk>
+    <Id>5</Id>
+    <Name>ыфв</Name>
+    <Address>ыфв</Address>
+    <CarCount>0</CarCount>
+  </Trunk>
+  <Trunk>
+    <Id>6</Id>
+    <Name>ыфв</Name>
+    <Address>фыв</Address>
     <CarCount>0</CarCount>
   </Trunk>
 </TrunksDB>
