@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\BaseCache.cs" />
+    <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Cache\TrunkCache.cs" />
     <Compile Include="Services\ICarService.cs" />
     <Compile Include="Services\IInfoService.cs" />
     <Compile Include="Services\ITrunkService.cs" />

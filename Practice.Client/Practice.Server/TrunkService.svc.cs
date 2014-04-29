@@ -1,4 +1,5 @@
 ﻿using Practice.Common;
+using Practice.Common.Cache;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,11 +11,14 @@ namespace Practice.Server
 	public class TrunkService : ITrunkService
 	{
 		readonly ITrunkRepository repo;
+		readonly ICache<Trunk> _cahce;
 
 		public TrunkService()
 		{
 			try
 			{
+				_cahce = new TrunkCache();
+
 				string typeStr1 = ConfigurationManager.AppSettings["trunkRepository"];
 				Type type1 = Type.GetType(typeStr1);
 				repo = (ITrunkRepository)Activator.CreateInstance(type1);
@@ -26,7 +30,10 @@ namespace Practice.Server
 
 		public IEnumerable<Trunk> GetAll()
 		{
-			return repo.GetAll();
+			if (_cahce.Count == 0)
+				_cahce.AddRange(repo.GetAll());
+
+			return _cahce.GetAll();
 		}
 
 		public int Add(Trunk data)
@@ -34,6 +41,7 @@ namespace Practice.Server
 			if (data != null)
 			{
 				repo.Add(data);
+				// add to cache
 				return data.Id;
 			}
 
@@ -42,6 +50,7 @@ namespace Practice.Server
 
 		public Trunk GetById(int id)
 		{
+			//check cache 
 			return repo.GetById(id);
 		}
 

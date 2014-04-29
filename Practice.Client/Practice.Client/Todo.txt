@@ -33,3 +33,9 @@ To monday:
   - create proxies for each repos
   - asynchronous calls of all proxy methods in client solution
   - look at xml repositories, check SourcePath property!!!
+
+
+
+  ------------------------
+  1) all actions regarding the invocation of the web service must be in the separate Thread!!
+  2) implement cache logic for all services

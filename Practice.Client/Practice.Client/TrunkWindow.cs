@@ -17,24 +17,24 @@ namespace Practice.Client
 		public TrunkWindow()
 		{
 			InitializeComponent();
-			
-            Thread loadThread = new Thread(ThreadLoader);
-            loadThread.IsBackground = true;
-            loadThread.Name = "Load trunks";
-            loadThread.Start();
+
+			Thread loadThread = new Thread(ThreadLoader);
+			loadThread.IsBackground = true;
+			loadThread.Name = "Load trunks";
+			loadThread.Start();
 		}
 
-        private void ThreadLoader()
-        {
-            using (TrunkProxy proxy = new TrunkProxy(Program.TrunkUrl))
-            {
-                IEnumerable<Trunk> trunks = proxy.GetAll();
-                dataGridView1.Invoke((MethodInvoker)(() =>
-                {
-                    dataGridView1.DataSource = trunks;
-                }));
-            }
-        }
+		private void ThreadLoader()
+		{
+			using (TrunkProxy proxy = new TrunkProxy(Program.TrunkUrl))
+			{
+				IEnumerable<Trunk> trunks = proxy.GetAll();
+				dataGridView1.Invoke((MethodInvoker)(() =>
+				{
+					dataGridView1.DataSource = trunks;
+				}));
+			}
+		}
 
 
 		private void addToolStripMenuItem_Click(object sender, EventArgs e)

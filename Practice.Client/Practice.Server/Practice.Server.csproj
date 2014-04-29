@@ -63,7 +63,9 @@
     <Content Include="InfoService.svc" />
     <Content Include="TrunkService.svc" />
     <Content Include="TypeService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarService.svc.cs">

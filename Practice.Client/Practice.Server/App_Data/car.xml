@@ -35,4 +35,11 @@
     <Mark>ыфвыфв</Mark>
     <TrunkId>1</TrunkId>
   </Car>
+  <Car>
+    <Id>5</Id>
+    <Cost>2334</Cost>
+    <Color>Red</Color>
+    <Mark>Audi</Mark>
+    <TrunkId>0</TrunkId>
+  </Car>
 </CarsDB>
